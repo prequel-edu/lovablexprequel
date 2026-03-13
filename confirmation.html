@@ -447,7 +447,7 @@
 
   <script>
     document.getElementById('copy-link-btn').addEventListener('click', function() {
-      var url = window.location.origin + '/index.html';
+      var url = window.location.href.replace('confirmation.html', 'index.html');
       var btn = this;
       var original = btn.textContent;
       if (navigator.clipboard && navigator.clipboard.writeText) {
