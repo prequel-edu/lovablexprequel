@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Build a Startup in 3 Hours. For Real. — Prequel × Lovable</title>
+  <title>You're In — Prequel × Lovable</title>
   <style>
     @font-face {
   font-family: 'PP Grotesk Narrow';
@@ -43,10 +43,10 @@
       --kiwi:    #c1f553;
       --black:   #1a1a1a;
       --white:   #f8f8f8;
-      --text-on-dark:  #e8e8e8;
-      --muted-on-dark: #b0b0b0;
-      --text-on-light:   #1a1a1a;
-      --muted-on-light:  #555555;
+      --text-on-dark:   #e8e8e8;
+      --muted-on-dark:  #b0b0b0;
+      --text-on-light:  #1a1a1a;
+      --muted-on-light: #555555;
     }
 
     html { scroll-behavior: smooth; }
@@ -56,13 +56,8 @@
       background: var(--black);
       color: var(--white);
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
     }
 
-    section { padding: 96px 24px; }
-    .container { max-width: 960px; margin: 0 auto; }
-
-    /* ===== HEADINGS — Narrow Medium (body) + Spatial Black (accent) ===== */
     h1, h2, h3 {
       font-family: 'PP Grotesk Narrow', sans-serif;
       font-weight: 500;
@@ -75,575 +70,375 @@
       text-transform: uppercase;
     }
 
-    /* ===== SCROLL ANIMATION ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
     .reveal {
       opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-    .reveal-delay-5 { transition-delay: 0.5s; }
-    .reveal-delay-6 { transition-delay: 0.6s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
 
-    /* ===== HERO ===== */
-    .hero {
-      background: var(--black);
+    /* ===== CONFIRMATION HERO ===== */
+    .confirm-hero {
+      padding: 100px 24px 72px;
       text-align: center;
-      padding: 110px 24px 90px;
       position: relative;
-      overflow: hidden;
     }
-    .hero::before {
+    .confirm-hero::before {
       content: '';
       position: absolute;
-      top: -120px; left: 50%; transform: translateX(-50%);
-      width: 700px; height: 700px;
-      background: radial-gradient(ellipse at center, rgba(33,223,189,0.07) 0%, transparent 70%);
+      top: -80px; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 500px;
+      background: radial-gradient(ellipse, rgba(33,223,189,0.06) 0%, transparent 65%);
       pointer-events: none;
     }
-    .hero-logos {
+    .logos {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 16px;
-      margin-bottom: 48px;
+      gap: 14px;
+      margin-bottom: 52px;
       animation: fadeUp 0.7s ease both;
     }
-    .hero-logos img { height: 38px; width: auto; }
+    .logos img { height: 34px; width: auto; }
     .logo-sep {
       font-family: 'PP Grotesk Narrow', sans-serif;
-      font-size: 26px;
+      font-size: 22px;
       color: #555;
     }
-    .hero h1 {
-      font-size: 72px;
-      line-height: 1.02;
+    h1 {
+      font-size: 84px;
+      line-height: 1;
       letter-spacing: 0.01em;
-      max-width: 900px;
-      margin: 0 auto 28px;
+      margin-bottom: 32px;
       color: var(--white);
       animation: fadeUp 0.7s 0.1s ease both;
     }
-    .hero h1 .accent-spatial { color: var(--mint); }
-    .hero .subhead {
-      font-family: 'PP Mori', sans-serif;
-      font-size: 20px;
-      color: var(--text-on-dark);
-      max-width: 560px;
-      margin: 0 auto 20px;
-      line-height: 1.6;
-      animation: fadeUp 0.7s 0.2s ease both;
-    }
-    .audience-tag {
-      display: inline-block;
-      font-family: 'PP Grotesk Narrow', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--kiwi);
-      background: rgba(193,245,83,0.1);
-      border: 1px solid rgba(193,245,83,0.3);
-      padding: 5px 14px;
-      border-radius: 999px;
-      margin-bottom: 32px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      animation: fadeUp 0.7s 0.25s ease both;
-    }
+    h1 .accent-spatial { color: var(--mint); }
     .date-badge {
       display: inline-block;
       background: var(--fire);
       color: white;
       font-family: 'PP Grotesk Narrow', sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      padding: 10px 24px;
+      font-size: 14px;
+      padding: 9px 22px;
       border-radius: 999px;
-      margin-bottom: 10px;
+      margin-bottom: 16px;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+    .email-note {
+      font-family: 'PP Mori', sans-serif;
+      font-size: 17px;
+      color: var(--text-on-dark);
+      margin-bottom: 52px;
       animation: fadeUp 0.7s 0.3s ease both;
     }
-    .virtual-label {
-      display: block;
-      font-family: 'PP Grotesk Narrow', sans-serif;
-      font-size: 12px;
-      color: var(--muted-on-dark);
-      margin-bottom: 44px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      animation: fadeUp 0.7s 0.35s ease both;
-    }
-    .cta-btn {
-      display: inline-block;
-      background: var(--mint);
-      color: var(--black);
-      font-family: 'PP Grotesk Narrow', sans-serif;
-      font-weight: 500;
-      font-size: 17px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 18px 44px;
-      border-radius: 10px;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-      animation: fadeUp 0.7s 0.4s ease both, floatPulse 3s 1.5s ease-in-out infinite;
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-    .cta-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(33,223,189,0.35);
+
+    /* Action card */
+    .action-card {
+      background: #1f1f1f;
+      border: 1px solid #2e2e2e;
+      border-radius: 20px;
+      padding: 36px 32px;
+      max-width: 500px;
+      margin: 0 auto 80px;
       animation: fadeUp 0.7s 0.4s ease both;
     }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes floatPulse {
-      0%, 100% { box-shadow: 0 4px 20px rgba(33,223,189,0.2); }
-      50%       { box-shadow: 0 8px 36px rgba(33,223,189,0.45); transform: translateY(-3px); }
-    }
-
-    /* ===== PARTNERSHIP ===== */
-    .partnership {
-      background: var(--white);
-      text-align: center;
-    }
-    .partnership .lovable-logo { width: 80px; height: auto; margin-bottom: 20px; }
-    .partnership h2 {
-      font-size: 34px;
-      color: var(--text-on-light);
+    .action-card-label {
+      font-family: 'PP Grotesk Narrow', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted-on-dark);
       margin-bottom: 18px;
     }
-    .partnership p {
-      font-family: 'PP Mori', sans-serif;
-      font-size: 18px;
-      color: var(--muted-on-light);
-      max-width: 560px;
-      margin: 0 auto;
-      line-height: 1.65;
-    }
-    .fuchsia-bar {
-      width: 48px; height: 3px;
-      background: var(--fuchsia);
-      margin: 28px auto 0;
-      border-radius: 2px;
-    }
-
-    /* ===== SPRINT STEPS ===== */
-    .steps { background: var(--black); text-align: center; }
-    .steps h2 {
-      font-size: 44px;
-      margin-bottom: 56px;
-      color: var(--white);
-    }
-    .steps-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      max-width: 640px;
-      margin: 0 auto 48px;
-      text-align: left;
-    }
-    .step-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
-      padding: 18px 20px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 12px;
-      transition: background 0.2s, border-color 0.2s, transform 0.2s;
-    }
-    .step-item:hover {
-      background: rgba(193,245,83,0.04);
-      border-color: rgba(193,245,83,0.2);
-      transform: translateX(4px);
-    }
-    .step-num {
-      flex-shrink: 0;
-      width: 42px; height: 42px;
-      border-radius: 50%;
-      background: var(--kiwi);
-      color: var(--black);
-      font-family: 'PP Grotesk Spatial', sans-serif;
-      font-weight: 900;
-      font-size: 17px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .step-text {
+    .action-btn {
+      display: block;
+      width: 100%;
       font-family: 'PP Grotesk Narrow', sans-serif;
       font-weight: 500;
-      font-size: 18px;
+      font-size: 15px;
       text-transform: uppercase;
-      letter-spacing: 0.03em;
-      color: var(--text-on-dark);
-      padding-top: 9px;
-      line-height: 1.3;
+      letter-spacing: 0.05em;
+      padding: 15px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 10px;
+      transition: transform 0.15s, opacity 0.15s;
+      text-align: center;
     }
-    .steps-footer {
-      font-family: 'PP Mori', sans-serif;
-      font-size: 16px;
-      color: var(--muted-on-dark);
-      font-style: italic;
-    }
+    .action-btn:last-child { margin-bottom: 0; }
+    .action-btn:hover { transform: translateY(-2px); opacity: 0.9; }
+    .btn-teal   { background: var(--mint);    color: var(--black); }
+    .btn-kiwi   { background: var(--kiwi);    color: var(--black); }
+    .btn-orange { background: var(--fire);    color: white; }
 
-    /* ===== STUDENT SHOWCASE ===== */
-    .showcase { background: var(--white); }
-    .showcase h2 {
-      font-size: 34px;
-      color: var(--text-on-light);
-      text-align: center;
-      margin-bottom: 12px;
-      max-width: 780px;
-      margin-left: auto;
-      margin-right: auto;
+    /* ===== SUMMER 2026 SECTION ===== */
+    .summer-section {
+      background: var(--white);
+      padding: 96px 24px;
     }
-    .showcase .sub {
-      font-family: 'PP Mori', sans-serif;
-      font-size: 17px;
-      color: var(--muted-on-light);
-      text-align: center;
-      margin-bottom: 52px;
-    }
-    .student-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      max-width: 960px;
+    .summer-inner {
+      max-width: 860px;
       margin: 0 auto;
     }
-    .student-card {
-      background: white;
-      border-radius: 16px;
-      padding: 28px 22px;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.07);
-      text-align: center;
-      transition: transform 0.25s, box-shadow 0.25s;
-    }
-    .student-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 36px rgba(0,0,0,0.12);
-    }
-    .student-photo {
-      width: 80px; height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--kiwi);
-      margin-bottom: 14px;
-    }
-    .student-name {
-      font-family: 'PP Grotesk Narrow', sans-serif;
-      font-weight: 500;
-      font-size: 16px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--text-on-light);
-      margin-bottom: 8px;
-    }
-    .student-oneliner {
-      font-family: 'PP Mori', sans-serif;
-      font-size: 13px;
-      color: var(--muted-on-light);
-      font-style: italic;
-      line-height: 1.5;
-      margin-bottom: 16px;
-    }
-    .badge {
+    .eyebrow {
       display: inline-block;
       font-family: 'PP Grotesk Narrow', sans-serif;
       font-size: 11px;
       font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
-      padding: 5px 12px;
+      letter-spacing: 0.08em;
+      color: var(--mint);
+      background: rgba(33,223,189,0.1);
+      border: 1px solid rgba(33,223,189,0.3);
+      padding: 4px 12px;
       border-radius: 999px;
+      margin-bottom: 20px;
+    }
+    .summer-section h2 {
+      font-size: 40px;
       color: var(--black);
+      margin-bottom: 20px;
+      max-width: 640px;
+      line-height: 1.1;
     }
-    .badge-teal    { background: var(--mint); }
-    .badge-fuchsia { background: var(--fuchsia); }
-
-    /* ===== FORM ===== */
-    .form-section {
-      background: var(--black);
-      text-align: center;
-      position: relative;
-    }
-    .form-section::before {
-      content: '';
-      position: absolute;
-      bottom: -60px; left: 50%; transform: translateX(-50%);
-      width: 500px; height: 400px;
-      background: radial-gradient(ellipse, rgba(249,86,242,0.06) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .form-section h2 {
-      font-size: 52px;
-      color: var(--white);
-      margin-bottom: 12px;
-    }
-    .form-section .sub {
+    .summer-section h2 .accent-spatial { color: var(--fuchsia); }
+    .summer-lead {
       font-family: 'PP Mori', sans-serif;
       font-size: 18px;
-      color: var(--text-on-dark);
+      color: #444;
+      line-height: 1.7;
+      max-width: 640px;
       margin-bottom: 48px;
     }
-    .form-card {
-      background: #1f1f1f;
-      border: 1px solid #2e2e2e;
-      border-radius: 20px;
-      padding: 44px 40px;
-      max-width: 560px;
-      margin: 0 auto;
-      text-align: left;
+
+    /* Stats */
+    .stats-row {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
     }
-    .form-row { display: flex; gap: 14px; margin-bottom: 14px; }
-    .form-row .field { flex: 1; }
-    .field { margin-bottom: 14px; }
-    .field input,
-    .field select {
-      width: 100%;
-      background: #272727;
-      border: 1px solid #383838;
-      border-radius: 10px;
-      color: var(--white);
+    .stat {
+      background: var(--black);
+      border-radius: 14px;
+      padding: 24px 28px;
+      flex: 1;
+      min-width: 150px;
+    }
+    .stat-number {
+      font-family: 'PP Grotesk Spatial', sans-serif;
+      font-weight: 900;
+      font-size: 38px;
+      text-transform: uppercase;
+      color: var(--mint);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
       font-family: 'PP Mori', sans-serif;
-      font-size: 15px;
-      padding: 15px 16px;
-      outline: none;
-      transition: border-color 0.15s, background 0.15s;
-      -webkit-appearance: none;
-      appearance: none;
+      font-size: 13px;
+      color: #bbb;
+      line-height: 1.4;
     }
-    .field input::placeholder { color: #636363; }
-    .field select { color: #636363; cursor: pointer; }
-    .field select.has-value { color: var(--white); }
-    .field select option { color: var(--white); background: #272727; }
-    .field input:focus,
-    .field select:focus { border-color: var(--mint); background: #2c2c2c; }
-    .submit-btn {
-      width: 100%;
-      background: var(--mint);
-      color: var(--black);
+
+    /* Phases */
+    .phases {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 44px;
+    }
+    .phase-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 14px;
+      padding: 24px 20px;
+      background: white;
+    }
+    .phase-label {
       font-family: 'PP Grotesk Narrow', sans-serif;
+      font-size: 10px;
       font-weight: 500;
-      font-size: 17px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+    .phase-label.teal    { color: var(--mint); }
+    .phase-label.fuchsia { color: var(--fuchsia); }
+    .phase-label.kiwi    { color: #6a9e00; }
+    .phase-card h4 {
+      font-family: 'PP Grotesk Spatial', sans-serif;
+      font-weight: 900;
+      font-size: 18px;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+    .phase-card p {
+      font-family: 'PP Mori', sans-serif;
+      font-size: 13px;
+      color: #555;
+      line-height: 1.55;
+    }
+    .phase-date {
+      display: inline-block;
+      font-family: 'PP Grotesk Narrow', sans-serif;
+      font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      padding: 18px;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      margin-top: 6px;
-      transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+      color: #888;
+      background: #f2f2f2;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-top: 12px;
     }
-    .submit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(33,223,189,0.3);
-    }
-    .submit-btn:disabled { opacity: 0.65; cursor: not-allowed; transform: none; box-shadow: none; }
 
-    /* ===== FOOTER ===== */
+    /* Summer CTA */
+    .summer-cta {
+      display: inline-block;
+      background: var(--black);
+      color: var(--white);
+      font-family: 'PP Grotesk Narrow', sans-serif;
+      font-weight: 500;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 17px 36px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .summer-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    }
+    .summer-cta .cta-sub {
+      font-family: 'PP Mori', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      opacity: 0.6;
+      display: block;
+      margin-top: 3px;
+    }
+
     footer {
       background: var(--black);
       border-top: 1px solid #232323;
       text-align: center;
-      padding: 48px 24px;
+      padding: 40px 24px;
     }
-    footer img { height: 30px; margin-bottom: 20px; }
+    footer img { height: 28px; margin-bottom: 16px; }
     footer p {
       font-family: 'PP Mori', sans-serif;
-      font-size: 14px;
+      font-size: 13px;
       color: var(--muted-on-dark);
-      margin-top: 8px;
+      margin-top: 6px;
     }
     footer a { color: var(--mint); text-decoration: none; }
 
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 900px) {
-      .hero h1 { font-size: 52px; }
-      .student-grid { grid-template-columns: repeat(2, 1fr); }
-      .form-row { flex-direction: column; gap: 0; }
-      .form-row .field { margin-bottom: 14px; }
+    @media (max-width: 700px) {
+      h1 { font-size: 60px; }
+      .phases { grid-template-columns: 1fr; }
+      .summer-section h2 { font-size: 30px; }
+      .action-card { padding: 28px 20px; }
     }
-    @media (max-width: 600px) {
-      .hero { padding: 80px 20px 64px; }
-      .hero h1 { font-size: 36px; }
-      .hero .subhead { font-size: 17px; }
-      .hero-logos img { height: 26px; }
-      .cta-btn { display: block; text-align: center; }
-      .student-grid { grid-template-columns: 1fr; }
-      .steps h2 { font-size: 32px; }
-      .showcase h2 { font-size: 26px; }
-      .form-section h2 { font-size: 36px; }
-      .form-card { padding: 28px 20px; }
-      section { padding: 72px 20px; }
+    @media (max-width: 480px) {
+      h1 { font-size: 48px; }
+      .confirm-hero { padding: 80px 20px 56px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-logos">
+  <section class="confirm-hero">
+    <div class="logos">
       <img src="images/prequel-logo-dark-bg.png" alt="Prequel">
       <span class="logo-sep">×</span>
-      <img src="images/lovable-logo.svg" alt="Lovable" style="height:38px;">
+      <img src="images/lovable-logo.svg" alt="Lovable" style="height:34px;">
     </div>
-    <div class="audience-tag">Open to High School Students · Grades 8–11</div>
-    <h1>Build a Startup in 3 Hours.<br><span class="accent-spatial" style="color:var(--mint);">For Real.</span></h1>
-    <p class="subhead">A free, hands-on virtual workshop where you'll go from idea to a real website — powered by AI.</p>
-    <div><span class="date-badge">April 18 · 12–3 PM ET · Free</span></div>
-    <span class="virtual-label">Fully Virtual</span>
-    <a href="#registration-form" class="cta-btn cta-scroll">Save My Spot →</a>
+    <h1>You're <span class="accent-spatial" style="color:var(--mint);">In.</span></h1>
+    <div><span class="date-badge">April 18 · 12–3 PM ET · Virtual</span></div>
+    <p class="email-note">Check your email for event details.</p>
+
+    <div class="action-card">
+      <p class="action-card-label">While you wait...</p>
+      <a href="https://lovable.dev" target="_blank" rel="noopener" class="action-btn btn-teal">
+        Try building something with Lovable →
+      </a>
+      <a href="https://instagram.com/joinprequel" target="_blank" rel="noopener" class="action-btn btn-kiwi">
+        Follow Prequel for updates →
+      </a>
+      <button id="copy-link-btn" class="action-btn btn-orange">
+        Share with a friend — Copy Link
+      </button>
+    </div>
   </section>
 
-  <!-- PARTNERSHIP -->
-  <section class="partnership">
-    <div class="container reveal">
-      <img class="lovable-logo" src="images/lovable-logo.svg" alt="Lovable">
-      <h2>In Partnership with <span class="accent-spatial" style="color:var(--fuchsia);">Lovable</span></h2>
-      <p>Lovable is an AI-powered tool that lets anyone build real software — no coding required. It's the tool you'll use to ship your startup today.</p>
-      <div class="fuchsia-bar"></div>
-    </div>
-  </section>
+  <section class="summer-section">
+    <div class="summer-inner">
+      <div class="reveal">
+        <span class="eyebrow">What's next after today</span>
+        <h2>Ready to build something <span class="accent-spatial" style="color:var(--fuchsia);">bigger?</span></h2>
+        <p class="summer-lead">Today is just a taste. Prequel is a 12-month virtual program where highly ambitious high schoolers build an exceptional project — and use it to get into their dream school.</p>
+      </div>
 
-  <!-- SPRINT STEPS -->
-  <section class="steps">
-    <div class="container">
-      <h2 class="reveal">In 3 Hours, <span class="accent-spatial" style="color:var(--kiwi);">You Will:</span></h2>
-      <div class="steps-list">
-        <div class="step-item reveal reveal-delay-1">
-          <div class="step-num">1</div>
-          <div class="step-text">Find your startup idea</div>
+      <div class="stats-row">
+        <div class="stat reveal reveal-d1">
+          <div class="stat-number">800+</div>
+          <div class="stat-label">Alumni who built something real</div>
         </div>
-        <div class="step-item reveal reveal-delay-2">
-          <div class="step-num">2</div>
-          <div class="step-text">Name it and write your pitch in one line</div>
+        <div class="stat reveal reveal-d2">
+          <div class="stat-number">4.8</div>
+          <div class="stat-label">Average program rating</div>
         </div>
-        <div class="step-item reveal reveal-delay-3">
-          <div class="step-num">3</div>
-          <div class="step-text">Build a real website using Lovable</div>
-        </div>
-        <div class="step-item reveal reveal-delay-4">
-          <div class="step-num">4</div>
-          <div class="step-text">Design a logo with AI</div>
-        </div>
-        <div class="step-item reveal reveal-delay-5">
-          <div class="step-num">5</div>
-          <div class="step-text">Create a launch plan</div>
-        </div>
-        <div class="step-item reveal reveal-delay-6">
-          <div class="step-num">6</div>
-          <div class="step-text">Pitch your startup to the group</div>
+        <div class="stat reveal reveal-d3">
+          <div class="stat-number">80%</div>
+          <div class="stat-label">of alumni attend top 30 schools</div>
         </div>
       </div>
-      <p class="steps-footer reveal">No experience needed. Just show up.</p>
-    </div>
-  </section>
 
-  <!-- STUDENT SHOWCASE -->
-  <section class="showcase">
-    <div class="container">
-      <h2 class="reveal">Students Who Showed Up and <span class="accent-spatial" style="color:var(--fuchsia);">Built Something Real</span></h2>
-      <p class="sub reveal">These are Prequel students. They started with an idea.</p>
-      <div class="student-grid">
-
-        <div class="student-card reveal reveal-delay-1">
-          <img class="student-photo" src="images/students/jasmine-wu.jpg" alt="Jasmine Wu">
-          <div class="student-name">Jasmine Wu</div>
-          <p class="student-oneliner">Helping millions understand space weather through real-time, ML-driven forecasts</p>
-          <span class="badge badge-teal">Built with Lovable ✓</span>
+      <div class="phases reveal">
+        <div class="phase-card">
+          <div class="phase-label teal">Phase 1</div>
+          <h4>Foundations</h4>
+          <p>Identify your unique spike, launch a real-world project with traction, and reach your first 1,000 in revenue or users.</p>
+          <span class="phase-date">June – September 2026</span>
         </div>
-
-        <div class="student-card reveal reveal-delay-2">
-          <img class="student-photo" src="images/students/anaiah-singh.jpg" alt="Anaiah Singh">
-          <div class="student-name">Anaiah Singh</div>
-          <p class="student-oneliner">Tackling the teen mental health crisis with audio messages recorded by teens, for teens</p>
-          <span class="badge badge-fuchsia">40K TikTok followers</span>
+        <div class="phase-card">
+          <div class="phase-label fuchsia">Phase 2</div>
+          <h4>Scale</h4>
+          <p>Grow your project to 10,000 in revenue or users and make it the centrepiece of your college application.</p>
+          <span class="phase-date">Sept 2026 – June 2027</span>
         </div>
-
-        <div class="student-card reveal reveal-delay-3">
-          <img class="student-photo" src="images/students/soumia-shah.jpg" alt="Soumia Shah">
-          <div class="student-name">Soumia Shah</div>
-          <p class="student-oneliner">Turning millions of girls into readers by making reading as addictive as scrolling</p>
-          <span class="badge badge-fuchsia">Live on the App Store</span>
+        <div class="phase-card">
+          <div class="phase-label kiwi">Phase 3</div>
+          <h4>Beyond</h4>
+          <p>For students ready to push further — scale to 1,000,000 in revenue or users and build a world-class venture.</p>
+          <span class="phase-date">For select students</span>
         </div>
+      </div>
 
-        <div class="student-card reveal reveal-delay-4">
-          <img class="student-photo" src="images/students/svar-chandak.png" alt="Svar Chandak">
-          <div class="student-name">Svar Chandak</div>
-          <p class="student-oneliner">Building the all-in-one tennis coaching platform for thousands of coaches and players</p>
-          <span class="badge badge-fuchsia">Real clients in Houston</span>
-        </div>
-
-        <div class="student-card reveal reveal-delay-5">
-          <img class="student-photo" src="images/students/shivin-singh.png" alt="Shivin Singh">
-          <div class="student-name">Shivin Singh</div>
-          <p class="student-oneliner">Transforming democracy with a real-time political accountability platform for voters</p>
-          <span class="badge badge-fuchsia">Accepted: UVA + UNC</span>
-        </div>
-
-        <div class="student-card reveal reveal-delay-6">
-          <img class="student-photo" src="images/students/divya-taneja.jpg" alt="Divya Taneja">
-          <div class="student-name">Divya Taneja</div>
-          <p class="student-oneliner">Creating the first culturally-rooted app to help young Indian women conquer PCOS</p>
-          <span class="badge badge-fuchsia">$300 revenue · 95-person community</span>
-        </div>
-
+      <div class="reveal">
+        <a href="https://www.joinprequel.com" target="_blank" rel="noopener" class="summer-cta">
+          Learn about Prequel Summer 2026 →
+          <span class="cta-sub">Applications open · Starts June 18, 2026</span>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- REGISTRATION FORM -->
-  <section class="form-section" id="registration-form">
-    <div class="container">
-      <h2 class="reveal">Save Your <span class="accent-spatial" style="color:var(--mint);">Spot</span></h2>
-      <p class="sub reveal">It's free. It's virtual. Just show up.</p>
-      <div class="form-card reveal">
-        <!-- TODO: Add HubSpot form embed here before going live -->
-        <form id="reg-form" action="" method="POST">
-          <div class="form-row">
-            <div class="field">
-              <input type="text" name="first_name" placeholder="First Name" required>
-            </div>
-            <div class="field">
-              <input type="text" name="last_name" placeholder="Last Name" required>
-            </div>
-          </div>
-          <div class="field">
-            <input type="email" name="email" placeholder="Email Address" required>
-          </div>
-          <div class="field">
-            <input type="tel" name="phone" placeholder="Phone Number (Optional)">
-          </div>
-          <div class="field">
-            <input type="text" name="dream_school" placeholder="Dream School" required>
-          </div>
-          <div class="field">
-            <select name="grade_level" id="grade-select" required>
-              <option value="">Select Grade Level</option>
-              <option value="8">Grade 8</option>
-              <option value="9">Grade 9</option>
-              <option value="10">Grade 10</option>
-              <option value="11">Grade 11</option>
-            </select>
-          </div>
-          <button type="submit" class="submit-btn">Save My Spot →</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
   <footer>
     <img src="images/prequel-logo-dark-bg.png" alt="Prequel">
     <p>Questions? <a href="mailto:hello@joinprequel.com">hello@joinprequel.com</a></p>
@@ -651,29 +446,29 @@
   </footer>
 
   <script>
-    document.querySelector('.cta-scroll').addEventListener('click', function(e) {
-      e.preventDefault();
-      document.getElementById('registration-form').scrollIntoView({ behavior: 'smooth' });
-    });
-
-    var gradeSelect = document.getElementById('grade-select');
-    gradeSelect.addEventListener('change', function() {
-      this.style.color = this.value ? '#f8f8f8' : '#636363';
-    });
-
-    document.getElementById('reg-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      var btn = this.querySelector('.submit-btn');
-      btn.disabled = true;
-      btn.textContent = 'See you April 18!';
-      setTimeout(function() { window.location.href = 'confirmed/'; }, 800);
+    document.getElementById('copy-link-btn').addEventListener('click', function() {
+      var url = window.location.href.replace('confirmation.html', 'index.html');
+      var btn = this;
+      var original = btn.textContent;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function() {
+          btn.textContent = 'Link copied! ✓';
+          setTimeout(function() { btn.textContent = original; }, 2000);
+        });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = url; document.body.appendChild(ta); ta.select();
+        document.execCommand('copy'); document.body.removeChild(ta);
+        btn.textContent = 'Link copied! ✓';
+        setTimeout(function() { btn.textContent = original; }, 2000);
+      }
     });
 
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) entry.target.classList.add('visible');
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
   </script>
 
