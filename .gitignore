@@ -1,0 +1,11 @@
+# Internal working files — not needed on GitHub Pages
+fonts-snippet.css
+PRD.md
+plan.md
+activity.md
+PROMPT_build.md
+alignment.md
+state.json
+event.jsonl
+retros/
+*.zip
