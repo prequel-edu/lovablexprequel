@@ -467,6 +467,151 @@
     }
     footer a { color: var(--mint); text-decoration: none; }
 
+
+    /* ===== LOVABLE WORDMARK ===== */
+    .lovable-wordmark {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+    .lovable-wordmark img {
+      height: 38px;
+      width: auto;
+    }
+    .lovable-wordmark span {
+      font-family: system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    /* ===== COUNTDOWN ===== */
+    .countdown-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 18px 0 6px;
+      animation: fadeUp 0.7s 0.32s ease both;
+    }
+    .countdown-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      min-width: 62px;
+    }
+    .countdown-num {
+      font-family: 'PP Grotesk Spatial', sans-serif;
+      font-size: 40px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .countdown-label {
+      font-family: 'PP Grotesk Narrow', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted-on-dark);
+    }
+    .countdown-sep {
+      font-family: 'PP Grotesk Spatial', sans-serif;
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--mint);
+      line-height: 1;
+      margin-bottom: 16px;
+      opacity: 0.7;
+    }
+    .countdown-done {
+      font-family: 'PP Grotesk Narrow', sans-serif;
+      font-size: 18px;
+      color: var(--mint);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ===== FAQ ===== */
+    .faq { background: var(--black); }
+    .faq h2 {
+      font-size: 44px;
+      color: var(--white);
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .faq-list {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .faq-item {
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.02);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .faq-item:hover {
+      border-color: rgba(33,223,189,0.3);
+      background: rgba(33,223,189,0.03);
+    }
+    .faq-item.open {
+      border-color: rgba(33,223,189,0.25);
+    }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px;
+      font-family: 'PP Grotesk Narrow', sans-serif;
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      line-height: 1.3;
+    }
+    .faq-question::after {
+      content: '+';
+      font-size: 22px;
+      color: var(--mint);
+      flex-shrink: 0;
+      margin-left: 16px;
+      transition: transform 0.25s;
+      font-weight: 300;
+    }
+    .faq-item.open .faq-question::after {
+      transform: rotate(45deg);
+    }
+    .faq-answer {
+      display: none;
+      padding: 0 24px 20px;
+      font-family: 'PP Mori', sans-serif;
+      font-size: 16px;
+      color: var(--text-on-dark);
+      line-height: 1.65;
+    }
+    .faq-item.open .faq-answer { display: block; }
+
+    @media (max-width: 600px) {
+      .lovable-wordmark img { height: 26px; }
+      .lovable-wordmark span { font-size: 20px; }
+      .countdown-num { font-size: 30px; }
+      .countdown-unit { min-width: 48px; }
+      .countdown-sep { font-size: 26px; }
+      .faq h2 { font-size: 32px; }
+      .faq-question { font-size: 15px; padding: 16px 18px; }
+      .faq-answer { padding: 0 18px 16px; font-size: 15px; }
+    }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
       .hero h1 { font-size: 52px; }
@@ -477,6 +622,7 @@
     @media (max-width: 600px) {
       .hero { padding: 80px 20px 64px; }
       .hero h1 { font-size: 36px; }
+      .audience-tag { font-size: 15px; padding: 7px 16px; letter-spacing: 0.04em; }
       .hero .subhead { font-size: 17px; }
       .hero-logos img { height: 26px; }
       .cta-btn { display: block; text-align: center; }
@@ -496,12 +642,24 @@
     <div class="hero-logos">
       <img src="images/prequel-full-logo-dark.png" alt="Prequel">
       <span class="logo-sep">×</span>
-      <img src="images/lovable-logo.svg" alt="Lovable" style="height:38px;">
+      <div class="lovable-wordmark">
+        <img src="images/lovable-logo.svg" alt="Lovable">
+        <span>Lovable</span>
+      </div>
     </div>
     <div class="audience-tag">Open to High School Students · Grades 8–11</div>
     <h1>Build a Startup in 90 Minutes.<br><span class="accent-spatial" style="color:var(--mint);">For Real.</span></h1>
     <p class="subhead">A free, hands-on virtual workshop where you'll go from idea to a real website — powered by AI.</p>
     <div><span class="date-badge">April 18 · 12–3 PM ET · Free</span></div>
+    <div class="countdown-wrap" id="event-countdown">
+      <div class="countdown-unit"><span class="countdown-num" id="cd-days">00</span><span class="countdown-label">Days</span></div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-hours">00</span><span class="countdown-label">Hours</span></div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-mins">00</span><span class="countdown-label">Mins</span></div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-secs">00</span><span class="countdown-label">Secs</span></div>
+    </div>
     <span class="virtual-label">Fully Virtual</span>
     <a href="#registration-form" class="cta-btn cta-scroll">Save My Spot →</a>
   </section>
@@ -603,6 +761,47 @@
     </div>
   </section>
 
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="container">
+      <h2 class="reveal">Got <span class="accent-spatial" style="color:var(--mint);">Questions?</span></h2>
+      <div class="faq-list">
+
+        <div class="faq-item reveal">
+          <div class="faq-question">Do I need a laptop or can I use my phone?</div>
+          <div class="faq-answer">Laptops are required. You'll be building a real website live during the session — you need a full keyboard and screen to make the most of it.</div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-1">
+          <div class="faq-question">What if I don't have an idea yet?</div>
+          <div class="faq-answer">That's totally okay — no idea needed to register. We'll help you discover your startup concept right at the start of the session.</div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-2">
+          <div class="faq-question">Do I need to know how to code?</div>
+          <div class="faq-answer">Zero coding experience required. Lovable's AI builds the website for you — you just describe what you want and it builds it.</div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-3">
+          <div class="faq-question">Is this really free?</div>
+          <div class="faq-answer">Yes. 100% free. No credit card, no catch. Just show up.</div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-4">
+          <div class="faq-question">What do I need to join?</div>
+          <div class="faq-answer">A laptop, a stable internet connection, and the drive to build something. We'll handle the rest.</div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-5">
+          <div class="faq-question">Will I keep what I build?</div>
+          <div class="faq-answer">Yes — you'll leave the workshop with a real, live website for your startup idea. It's yours to keep and share.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- REGISTRATION FORM -->
   <section class="form-section" id="registration-form">
     <div class="container">
@@ -667,6 +866,45 @@
       btn.disabled = true;
       btn.textContent = 'See you April 18!';
       setTimeout(function() { window.location.href = 'confirmed/'; }, 800);
+    });
+
+
+    // Countdown timer — April 18 2026, 12:00 PM ET (UTC-4 during EDT)
+    (function() {
+      var eventDate = new Date('2026-04-18T16:00:00Z'); // 12:00 PM EDT = 16:00 UTC
+      function pad(n) { return n < 10 ? '0' + n : '' + n; }
+      function tick() {
+        var now = new Date();
+        var diff = eventDate - now;
+        if (diff <= 0) {
+          var wrap = document.getElementById('event-countdown');
+          if (wrap) wrap.innerHTML = '<span class="countdown-done">The event is live!</span>';
+          return;
+        }
+        var days  = Math.floor(diff / 86400000);
+        var hours = Math.floor((diff % 86400000) / 3600000);
+        var mins  = Math.floor((diff % 3600000)  / 60000);
+        var secs  = Math.floor((diff % 60000)    / 1000);
+        var d = document.getElementById('cd-days');
+        var h = document.getElementById('cd-hours');
+        var m = document.getElementById('cd-mins');
+        var s = document.getElementById('cd-secs');
+        if (d) d.textContent = pad(days);
+        if (h) h.textContent = pad(hours);
+        if (m) m.textContent = pad(mins);
+        if (s) s.textContent = pad(secs);
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(function(item) {
+      item.addEventListener('click', function() {
+        var isOpen = this.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+        if (!isOpen) this.classList.add('open');
+      });
     });
 
     var observer = new IntersectionObserver(function(entries) {
