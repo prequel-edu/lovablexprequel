@@ -862,10 +862,48 @@
 
     document.getElementById('reg-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      var btn = this.querySelector('.submit-btn');
+      var form = this;
+      var btn = form.querySelector('.submit-btn');
       btn.disabled = true;
-      btn.textContent = 'See you April 18!';
-      setTimeout(function() { window.location.href = 'confirmed/'; }, 800);
+      btn.textContent = 'Saving your spot\u2026';
+
+      var gradeMap = {'8': '8th grade', '9': '9th grade', '10': '10th grade', '11': '11th grade'};
+      var gradeRaw = form.querySelector('[name="grade_level"]').value;
+
+      var fields = [
+        {name: 'firstname',    value: form.querySelector('[name="first_name"]').value},
+        {name: 'lastname',     value: form.querySelector('[name="last_name"]').value},
+        {name: 'email',        value: form.querySelector('[name="email"]').value},
+        {name: 'phone',        value: form.querySelector('[name="phone"]').value || ''},
+        {name: 'dream_school', value: form.querySelector('[name="dream_school"]').value},
+        {name: 'what_grade_are_you_currently_completing_', value: gradeMap[gradeRaw] || gradeRaw}
+      ];
+
+      fetch('https://api.hsforms.com/submissions/v3/integration/submit/24318280/efe401b6-99a6-4071-bd17-c8312f7ee47c', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          fields: fields,
+          context: {
+            pageUri: 'https://lovable.joinprequel.com',
+            pageName: 'Prequel x Lovable \u2014 Workshop Registration'
+          }
+        })
+      })
+      .then(function(res) {
+        if (res.ok) {
+          window.location.href = 'confirmed/';
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Save My Spot \u2192';
+          alert('Something went wrong. Please try again.');
+        }
+      })
+      .catch(function() {
+        btn.disabled = false;
+        btn.textContent = 'Save My Spot \u2192';
+        alert('Something went wrong. Please try again.');
+      });
     });
 
 
