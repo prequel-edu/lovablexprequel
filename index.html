@@ -11,6 +11,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Build a Startup in 2 Hours. For Real. — Prequel × Lovable</title>
+  <meta property="og:title" content="Build a Startup in 2 Hours. For Real. — Prequel × Lovable">
+  <meta property="og:description" content="A free virtual workshop for high schoolers. Go from idea to a real startup website in one session using AI. April 18 · Free · Virtual.">
+  <meta property="og:image" content="https://lovable.joinprequel.com/images/og-cover.png">
+  <meta property="og:url" content="https://lovable.joinprequel.com/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Build a Startup in 2 Hours. For Real. — Prequel × Lovable">
+  <meta name="twitter:description" content="A free virtual workshop for high schoolers. Go from idea to a real startup website in one session using AI. April 18 · Free · Virtual.">
+  <meta name="twitter:image" content="https://lovable.joinprequel.com/images/og-cover.png">
   <style>
     @font-face {
   font-family: 'PP Grotesk Narrow';
@@ -244,6 +253,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     /* ===== SPRINT STEPS ===== */
+    .mid-cta { background: var(--black); text-align: center; padding: 72px 24px; }
+    .mid-cta-label { font-family: 'PP Mori', sans-serif; font-size: 18px; color: var(--muted-on-dark); margin-bottom: 28px; }
+    .mid-cta .cta-btn { animation: none; }
     .steps { background: var(--black); text-align: center; }
     .steps h2 {
       font-size: 44px;
@@ -793,6 +805,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </section>
 
 
+  <!-- MID-PAGE CTA -->
+  <section class="mid-cta">
+    <div class="container">
+      <p class="mid-cta-label">Ready to build yours?</p>
+      <a href="#registration-form" class="cta-btn cta-scroll">Save My Spot — It's Free →</a>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section class="faq">
     <div class="container">
@@ -881,9 +901,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </footer>
 
   <script>
-    document.querySelector('.cta-scroll').addEventListener('click', function(e) {
-      e.preventDefault();
-      document.getElementById('registration-form').scrollIntoView({ behavior: 'smooth' });
+    document.querySelectorAll('.cta-scroll').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('registration-form').scrollIntoView({ behavior: 'smooth' });
+      });
     });
 
     var gradeSelect = document.getElementById('grade-select');
