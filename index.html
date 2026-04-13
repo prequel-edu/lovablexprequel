@@ -946,13 +946,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         } else {
           btn.disabled = false;
           btn.textContent = 'Save My Spot \u2192';
-          alert('Something went wrong. Please try again.');
+          alert('Registration failed. Please try in a different browser or email hello@joinprequel.com to register manually.');
         }
       })
       .catch(function() {
         btn.disabled = false;
         btn.textContent = 'Save My Spot \u2192';
-        alert('Something went wrong. Please try again.');
+        alert('Registration failed \u2014 your browser may be blocking the request. Try in Chrome or an incognito window, or email hello@joinprequel.com to register manually.');
       });
     });
 
