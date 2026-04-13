@@ -423,6 +423,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .form-row { display: flex; gap: 14px; margin-bottom: 14px; }
     .form-row .field { flex: 1; }
     .field { margin-bottom: 14px; }
+    .field-label {
+      display: block;
+      font-family: 'PP Mori', sans-serif;
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 6px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .field-label .req { color: #ff7c5c; margin-left: 2px; }
+    .field input:invalid:not(:placeholder-shown),
+    .field select:invalid:not(.placeholder-shown) { border-color: #ff5c5c; }
     .field input,
     .field select {
       width: 100%;
@@ -857,25 +869,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="reveal" style="font-size:14px;color:#888;margin-top:-12px;margin-bottom:20px;letter-spacing:0.04em;">Registration closes April 17.</p>
       <div class="form-card reveal">
         <!-- TODO: Add HubSpot form embed here before going live -->
-        <form id="reg-form" action="" method="POST">
+        <form id="reg-form" action="" method="POST" novalidate>
           <div class="form-row">
             <div class="field">
+              <label class="field-label">First Name <span class="req">*</span></label>
               <input type="text" name="first_name" placeholder="First Name" required>
             </div>
             <div class="field">
+              <label class="field-label">Last Name <span class="req">*</span></label>
               <input type="text" name="last_name" placeholder="Last Name" required>
             </div>
           </div>
           <div class="field">
-            <input type="email" name="email" placeholder="Email Address" required>
+            <label class="field-label">Email Address <span class="req">*</span></label>
+            <input type="email" name="email" placeholder="your@email.com" required>
           </div>
           <div class="field">
-            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <label class="field-label">Phone Number <span class="req">*</span></label>
+            <input type="tel" name="phone" placeholder="(555) 555-5555" required>
           </div>
           <div class="field">
-            <input type="text" name="dream_school" placeholder="Dream School (optional)">
+            <label class="field-label">Dream School <span class="req">*</span></label>
+            <input type="text" name="dream_school" placeholder="e.g. MIT, Stanford, NYU" required>
           </div>
           <div class="field">
+            <label class="field-label">Grade Level <span class="req">*</span></label>
             <select name="grade_level" id="grade-select" required>
               <option value="">Select Grade Level</option>
               <option value="8">Grade 8</option>
@@ -884,6 +902,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <option value="11">Grade 11</option>
             </select>
           </div>
+          <p style="font-size:11px;color:#666;margin:-4px 0 12px;letter-spacing:0.03em;"><span style="color:#ff7c5c;">*</span> Required</p>
           <button type="submit" class="submit-btn">Save My Spot →</button>
         </form>
       </div>
@@ -913,6 +932,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('reg-form').addEventListener('submit', function(e) {
       e.preventDefault();
       var form = this;
+
+      // Clear previous inline errors
+      form.querySelectorAll('.field-error').forEach(function(el) { el.remove(); });
+      form.querySelectorAll('.field input, .field select').forEach(function(el) {
+        el.style.borderColor = '';
+      });
+
+      // Validate required fields
+      var errors = [];
+      var labels = {
+        first_name: 'First Name', last_name: 'Last Name', email: 'Email Address',
+        phone: 'Phone Number', dream_school: 'Dream School', grade_level: 'Grade Level'
+      };
+      form.querySelectorAll('[required]').forEach(function(el) {
+        if (!el.value.trim()) {
+          el.style.borderColor = '#ff5c5c';
+          var msg = document.createElement('p');
+          msg.className = 'field-error';
+          msg.style.cssText = 'color:#ff7c5c;font-size:11px;margin:4px 0 0;';
+          msg.textContent = (labels[el.name] || el.name) + ' is required.';
+          el.parentNode.appendChild(msg);
+          errors.push(el.name);
+        }
+      });
+      if (errors.length) return;
+
       var btn = form.querySelector('.submit-btn');
       btn.disabled = true;
       btn.textContent = 'Saving your spot\u2026';
