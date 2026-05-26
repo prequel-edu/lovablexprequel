@@ -958,6 +958,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
       if (errors.length) return;
 
+      // Email validation — strict format + common-typo correction (.con, gmai.com, etc.)
+      var emailEl = form.querySelector('input[name="email"]');
+      var emailVal = (emailEl.value || '').trim().toLowerCase();
+      var showEmailErr = function(text) {
+        emailEl.style.borderColor = '#ff5c5c';
+        var em = document.createElement('p');
+        em.className = 'field-error';
+        em.style.cssText = 'color:#ff7c5c;font-size:11px;margin:4px 0 0;';
+        em.textContent = text;
+        emailEl.parentNode.appendChild(em);
+        emailEl.focus();
+      };
+      if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(emailVal)) { showEmailErr('Please enter a valid email address.'); return; }
+      if (/\.con$/i.test(emailVal)) { var fixedCon = emailVal.replace(/\.con$/i, '.com'); emailEl.value = fixedCon; showEmailErr('We corrected ".con" to ".com" — please confirm and submit again.'); return; }
+      var EMAIL_TYPOS = {'gmai.com':'gmail.com','gmial.com':'gmail.com','gmal.com':'gmail.com','gnail.com':'gmail.com','yaho.com':'yahoo.com','yahooo.com':'yahoo.com','hotmial.com':'hotmail.com','hotmai.com':'hotmail.com','iclou.com':'icloud.com','icould.com':'icloud.com','outloo.com':'outlook.com'};
+      var emailDomain = emailVal.split('@')[1];
+      if (EMAIL_TYPOS[emailDomain]) { var fixedDom = emailVal.replace('@' + emailDomain, '@' + EMAIL_TYPOS[emailDomain]); emailEl.value = fixedDom; showEmailErr('Did you mean ' + fixedDom + '? Please confirm and submit again.'); return; }
+
       var btn = form.querySelector('.submit-btn');
       btn.disabled = true;
       btn.textContent = 'Saving your spot\u2026';
